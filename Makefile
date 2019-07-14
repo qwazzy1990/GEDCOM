@@ -18,9 +18,7 @@ TEST:
 mytest: maketest runtest
 
 maketest: BIN SRC CLASS TEST
-	$(JCC) $(JFLAGS) class test/HelloWorld.java test/Parser.java
-	mv test/HelloWorld.class test/Parser.java class;
-	
+	$(JCC) $(JFLAGS) class src/Parser.java src/HelloWorld.java
 
 runtest:
 	cd class; \

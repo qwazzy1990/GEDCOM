@@ -1,34 +1,60 @@
-import jdk.nashorn.internal.ir.GetSplitState;
 
 import java.util.*;
 import java.util.stream.*;
 import java.awt.Desktop;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+
 
 
 public class Parser {
 
-    public static openFile(String fileName)
+    public static void openFile(StringBuilder theFile, String fileName)
     {
-        File file = new File(fileName);
 
-        if(Desktop.isDesktopSupported() == false)
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            int r;
+           
+            while((r = reader.read())!= -1)
+            {
+                theFile.append((char)(r));
+            }
+            reader.close();
+
+        }catch(IOException e)
         {
-            System.out.println("Desktop is not supported");
+            e.printStackTrace();
+        }
+       
+       
+    }
+
+    public static void fileToArray(StringBuilder[] fileLines, StringBuilder theFile)
+    {
+        String temp = theFile.toString();
+        String newString = customReplaceAll(temp, "\\n");
+        System.out.println(newString);
+        String finalString = customReplaceAll(newString, "\\r");
+        System.out.println(finalString);
+        //temp.replaceAll("\n", "ZyZyZxZy");
+
+        String[] splitOne = finalString.split("ZyZyZxZy");
+        System.out.println(splitOne.length);
+        for(int i = 0; i < splitOne.length; i++)
+        {
+            System.out.println(splitOne[i]);
+        }
+    }
+
+    private static String customReplaceAll(String s, String delim)
+    {
+        if(s.contains(delim)==false)
+        {
+            return s;
         }
 
-        Desktop desktop = Desktop.getDesktop();
-
-        if(file.exists())
-        {
-            desktop.open(file);
-            return file;
-        }
-        else 
-        {
-            return NULL;
-        }
+        String ss = s.replace(delim, "ZyZyZxZy");
+        return customReplaceAll(ss, delim);
     }
 }
 

@@ -1,6 +1,6 @@
 
 JCC = javac
-JFLAGS = -g
+JFLAGS = -g -d
 
 
 all: mytest runtest
@@ -18,8 +18,8 @@ TEST:
 mytest: maketest runtest
 
 maketest: BIN SRC CLASS TEST
-	$(JCC) $(JFLAGS) src/HelloWorld.java
-	mv src/HelloWorld.class class;
+	$(JCC) $(JFLAGS) class test/HelloWorld.java test/Parser.java
+	mv test/HelloWorld.class test/Parser.java class;
 	
 
 runtest:

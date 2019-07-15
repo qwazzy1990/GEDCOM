@@ -41,7 +41,7 @@ public class Parser {
      * @param theFile   Splits theFile into and array of lines. Splits on "\r" and
      *                  "\n"
      */
-    public static void fileToArray(StringBuilder[] fileLines, StringBuilder theFile) {
+    public static void fileToArray(ArrayList <String> fileLines, StringBuilder theFile) {
         // Because I could not get replace all to work, or to get replace to work on the
         // Substrng \r\n or \n\r, I used this work around.
         String temp = theFile.toString();
@@ -50,15 +50,14 @@ public class Parser {
 
         String[] splitOne = temp.split(replaceValue);
 
-        int count = 0;
 
         // Copy all non-empty strings into fileLines
         for (int i = 0; i < splitOne.length; i++) {
             if (splitOne[i].isEmpty() == false) {
-                fileLines[count] = new StringBuilder(splitOne[i]);
-                count++;
+               fileLines.add(splitOne[i].toString());
             }
         }
+
     }
 
     /**
@@ -76,4 +75,5 @@ public class Parser {
         String ss = s.replace(delim, replaceValue);
         return customReplaceAll(ss, delim);
     }
+
 }

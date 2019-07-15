@@ -13,7 +13,7 @@ public class HelloWorld
         StringBuilder theFile = new StringBuilder();
         Parser.openFile(theFile, "../test/test.txt");
         
-        StringBuilder[] fileLines = new StringBuilder[10];
+        StringBuilder[] fileLines = new StringBuilder[theFile.length()];
         Parser.fileToArray(fileLines, theFile);
     }
 }

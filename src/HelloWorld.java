@@ -11,12 +11,31 @@ public class HelloWorld
     public static void main(String[] args)
     {
         StringBuilder theFile = new StringBuilder();
-        Parser.openFile(theFile, "../test/test.txt");
+        Parser.openFile(theFile, "../test/fileOne.txt");
         
         ArrayList<String> fileLines = new ArrayList<String>();
         Parser.fileToArray(fileLines, theFile);
+        
 
-        for(int i = 0; i < fileLines.size(); i++)
-            System.out.println(fileLines.get(i));
+        
+        ArrayList<String> folded = new ArrayList<String>();
+
+        Parser.fold(folded, fileLines);
+
+        System.out.println(folded.size());
+
+
+        
+        ArrayList<GedLine> gedLines = new ArrayList();
+        Parser.arrayToGedLines(gedLines, folded);
+
+        for(int i = 0; i < gedLines.size(); i++)
+        {
+            System.out.println("-------------------");
+            System.out.println(gedLines.get(i).toString());
+            System.out.println("-------------------");
+        }
+
+        //System.out.println(line.toString());
     }
 }

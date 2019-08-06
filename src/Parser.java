@@ -95,8 +95,11 @@ public class Parser {
             if(s.contains("CONC") || s.contains("CONT"))
             {
                 //remove CONT or CONC from 's'
-                s = s.substring(s.lastIndexOf("CONT")+4);
-                s = s.substring(s.lastIndexOf("CONC")+4);
+                if(s.contains(("CONT")))
+                    s = s.substring(s.lastIndexOf("CONT")+4);
+                
+                else
+                    s = s.substring(s.lastIndexOf("CONC")+4);
 
                 //for while loop counter
                 int x = i+1;
@@ -181,18 +184,15 @@ public class Parser {
             //if there are three elements in the array then
             if(arr.length == 3)
             {
+                System.out.println(g.getTag());
                 //if the last element is a pointer then it is a reference to some other object
                 if(isXref(arr[2]))
                 {
                     g.addReference(arr[2]);
                 }
 
-                //if it is a tag then set the tag
-                else if(arr[2].toUpperCase().equals(arr[2]) && g.getTag().isEmpty()==false)
-                {
-                    g.setValue(arr[2]);
-                }
-                else if(arr[2].toUpperCase().equals(arr[2]) && g.getTag().isEmpty()==true)
+               
+                else if(g.getTag() =="No Tag")
                 {
                     g.setTag(arr[2]);
                 }
@@ -221,7 +221,7 @@ public class Parser {
                 }//end if
 
                 //if it is a tag then
-                else if(arr[2].toUpperCase().equals(arr[2]) && g.getTag().isEmpty()==true)
+                else if( g.getTag()=="No Tag")
                 {
                     g.setTag(arr[2]);
 

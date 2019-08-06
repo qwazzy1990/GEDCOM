@@ -21,8 +21,7 @@ public class HelloWorld
         ArrayList<String> folded = new ArrayList<String>();
 
         Parser.fold(folded, fileLines);
-
-        System.out.println(folded.size());
+      
 
 
         

@@ -228,46 +228,12 @@ public class Parser {
 
     public static void gedLinesToGedObjects(ArrayList<GedObject> obs, ArrayList<GedLine> gedLine) {
 
-        Iterator itr = gedLine.iterator();
-        while (itr.hasNext()) {
-            GedLine line = (GedLine)itr.next();
-
-            if (line.getGedLineNumber().equals("0")) {
-
-                GedObject obj = new GedObject();
-                obj.setType(line.getTag());
-                if (line.getPointer() != "No Pointer") {
-                    obj.setPtr(line.getPointer());
-                }
-                if (line.getTag() != "No Tag") {
-                    obj.setTag(line.getTag());
-                }
-                if (line.getReference() != "No Reference") {
-                    obj.setReference(line.getReference());
-                }
-                if (line.getValue() != "No Value") {
-                    obj.setValue(line.getValue());
-                }
-                line = (GedLine)itr.next();
-                while (line.getGedLineNumber().equals("0") == false) {
-                    if (line.getPointer() != "No Pointer") {
-                        obj.setPtr(line.getPointer());
-                    }
-                    if (line.getTag() != "No Tag") {
-                        obj.setTag(line.getTag());
-                    }
-                    if (line.getReference() != "No Reference") {
-                        obj.setReference(line.getReference());
-                    }
-                    if (line.getValue() != "No Value") {
-                        obj.setValue(line.getValue());
-                    }
-                }
-                obs.add(obj);
-                // System.out.println(i);
-
-            }
+        if(gedLine.isEmpty())
+        {
+            return;
         }
+        GedObject obj = new GedObject();
+        //FIX ME
     }
 
     /** VALIDATOR SECTION */

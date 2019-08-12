@@ -39,7 +39,7 @@ public class HelloWorld
         GedObject obj = new GedObject();
 
         
-        System.out.println(obj.toString());
+        //System.out.println(obj.toString());
 
 
         ArrayList<GedObject> obs = new ArrayList();

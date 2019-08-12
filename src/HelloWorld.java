@@ -5,6 +5,7 @@ import java.util.stream.*;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.security.GuardedObject;
 
 public class HelloWorld
 {
@@ -32,6 +33,23 @@ public class HelloWorld
         {
             System.out.println("-------------------");
             System.out.println(gedLines.get(i).toString());
+            System.out.println("-------------------");
+        }
+
+        GedObject obj = new GedObject();
+
+        
+        System.out.println(obj.toString());
+
+
+        ArrayList<GedObject> obs = new ArrayList();
+        Parser.gedLinesToGedObjects(obs, gedLines);
+        System.out.println(obs.size());
+        for(int i = 0; i < obs.size(); i++)
+        {
+            System.out.println("Here");
+            System.out.println("-------------------");
+            System.out.println(obs.get(i).toString());
             System.out.println("-------------------");
         }
 

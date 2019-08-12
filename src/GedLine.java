@@ -3,7 +3,7 @@ import java.util.stream.*;
 import java.awt.Desktop;
 import java.io.*;
 
-public class GedLine {
+public class GedLine extends Object {
 
     /*Number represeting the line numbe of the file line in the .ged file. Must be >= 0*/
     String gedLineNumber;

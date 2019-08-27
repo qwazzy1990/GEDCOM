@@ -47,12 +47,21 @@ public class HelloWorld
         System.out.println(obs.size());
         for(int i = 0; i < obs.size(); i++)
         {
-            System.out.println("Here");
             System.out.println("-------------------");
             System.out.println(obs.get(i).toString());
             System.out.println("-------------------");
         }
 
+        //System.out.println("Testing Remove");
+        /*ArrayList<Integer> arr = new ArrayList();
+        arr.add(1);
+        arr.add(2);
+        arr.add(3);
+        System.out.println("Size is "+arr.size());
+        System.out.println("Value at 0 is "+arr.get(0));
+        arr.remove(0);
+        System.out.println("Size is "+arr.size());
+        System.out.println("Value at 0 is "+arr.get(0));*/
         //System.out.println(line.toString());
     }
 }

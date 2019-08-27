@@ -226,14 +226,60 @@ public class Parser {
         } // end for
     }// end func
 
-    public static void gedLinesToGedObjects(ArrayList<GedObject> obs, ArrayList<GedLine> gedLine) {
+    public static void gedLinesToGedObjects(ArrayList<GedObject> obs, ArrayList<GedLine> lines) {
 
-        if(gedLine.isEmpty())
-        {
+        if (lines.isEmpty()) {
             return;
         }
         GedObject obj = new GedObject();
-        //FIX ME
+        GedLine line = lines.get(0);
+
+        obj.setType(line.getTag());
+
+        if (line.getPointer().equals("No Pointer") == false) {
+            obj.setPtr(line.getPointer());
+        }
+        if (line.getReference().equals("No Reference") == false) {
+            obj.setReference(line.getReference());
+        }
+
+        if (line.getValue().equals("No Value") == false) {
+            obj.setValue(line.getValue());
+        }
+
+        lines.remove(0);
+
+        if (lines.isEmpty())
+        {
+            obs.add(obj);
+            return;
+        }
+
+        line = lines.get(0);
+        while (line.getGedLineNumber().equals("0") == false) {
+            if (line.getPointer().equals("No Pointer") == false) {
+                obj.setPtr(line.getPointer());
+            }
+            if (line.getTag().equals("No Tag") == false && line.getValue().equals("No Value") == false) {
+                obj.setTag(line.getTag());
+                obj.setValue(line.getValue());
+            }
+            if (line.getReference().equals("No Reference") == false) {
+                obj.setReference(line.getReference());
+            }
+            lines.remove(0);
+            if(lines.isEmpty())
+            {
+                obs.add(obj);
+                return;
+            }
+            line = lines.get(0);
+        }
+        obs.add(obj);
+        gedLinesToGedObjects(obs, lines);
+        return;
+
+        
     }
 
     /** VALIDATOR SECTION */

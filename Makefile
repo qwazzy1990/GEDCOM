@@ -18,7 +18,7 @@ TEST:
 mytest: maketest runtest
 
 maketest: BIN SRC CLASS TEST
-	$(JCC) $(JFLAGS) class src/Parser.java src/GedLine.java src/GedObject.java src/Note.java src/DateTime.java src/HelloWorld.java
+	$(JCC) $(JFLAGS) class src/Parser.java src/GedLine.java src/GedObject.java src/Note.java src/TagValue.java src/DateTime.java src/HelloWorld.java
 
 runtest:
 	cd class; \
